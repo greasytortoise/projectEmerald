@@ -73,6 +73,19 @@ class Signup extends React.Component{
     });
   }
 
+  handleRightButtonPressed() {
+    AsyncStorage.getItem('authData').then(authData => {
+      this.props.navigator.push({
+        onRightButtonPress: this.handleRightButtonPressed.bind(this),
+        title: 'Profile',
+        component: Profile,
+        passProps: {
+          userInfo: JSON.parse(authData)
+        }
+      });
+    });
+  }
+
   handleEmail(event) {
     this.setState({
       email: event.nativeEvent.text

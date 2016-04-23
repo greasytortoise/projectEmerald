@@ -85,15 +85,14 @@ class Login extends React.Component{
 
   loggingIn() {
     // Using Firebase to authenticate
-    var that = this;
     var ref = new Firebase(firebaseUrl);
     ref.authWithPassword({
-      email: that.state.email,
-      password: that.state.password
-    }, function(error, authData) {
+      email: this.state.email,
+      password: this.state.password
+    }, (error, authData) => {
       if (error) {
         console.log("Login Failed!", error);
-        that.setState({
+        this.setState({
           error: 'Login failed'
         });
       } else {
@@ -103,9 +102,11 @@ class Login extends React.Component{
         .then((res) => {
           console.log(res)
           AsyncStorage.setItem('name', res.name);
-          that.props.navigator.push({
+          this.props.navigator.push({
+            rightButtonTitle: 'Profile',
+            onRightButtonPress: this.handleRightButtonPressed.bind(this),
+            title: 'Friend Finder',
             component: Listings,
-            backButtonTitle: 'Logout',
             passProps: {
               userInfo: authData
             }
