@@ -56,7 +56,7 @@ class Listings extends Component{
   componentWillMount() {
     this.getAsyncData();
     this.ref.on('value', function(snapshot) {
-      
+
       api.getListings({latitude: this.state.lat, longitude: this.state.long}, 100, (res) => {
 
         this.setState({
@@ -280,11 +280,11 @@ var styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC',
-    height:50,
-    overflow:'hidden',
-    borderWidth: 0.5
-  },
+    backgroundColor: '#3b6142',
+    color: '#fff',
+    height:55,
+    overflow:'hidden'
+   },
 
   isLoadingContainer: {
     flex: 1,
@@ -331,7 +331,8 @@ var styles = {
     position: 'relative',
     top: -2,
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#fff'
     // color: 'black'
   },
 
@@ -360,7 +361,7 @@ var styles = {
     justifyContent: 'center',
     flexWrap: 'wrap',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#f2faf4',
     padding: 10,
     shadowOffset:{
       width: 3,
