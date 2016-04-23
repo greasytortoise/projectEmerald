@@ -5,6 +5,7 @@ var Listings = require('../Listings/Listings')
 var TabBar = require('../TabBar');
 var Listings = require('../Listings/Listings.js');
 var firebaseUrl = require('../../Utils/config');
+import Profile from '../Profiles/Profile';
 
 import Signup from './Signup'
 
@@ -33,10 +34,12 @@ class Login extends React.Component{
   componentDidMount() {
 
     AsyncStorage.getItem('authData').then(authData => {
-
       if(authData) {
         authData = JSON.parse(authData);
         this.props.navigator.push({
+          rightButtonTitle: 'Profile',
+          onRightButtonPress: this.handleRightButtonPressed.bind(this),
+          title: 'Friend Finder',
           component: Listings,
           passProps: {
             userInfo: authData
@@ -56,6 +59,18 @@ class Login extends React.Component{
     });
   }
 
+  handleRightButtonPressed() {
+    AsyncStorage.getItem('authData').then(authData => {
+      this.props.navigator.push({
+        onRightButtonPress: this.handleRightButtonPressed.bind(this),
+        title: 'Profile',
+        component: Profile,
+        passProps: {
+          userInfo: JSON.parse(authData)
+        }
+      });
+    });
+  }
   handleEmail(event) {
     this.setState({
       email: event.nativeEvent.text
@@ -90,6 +105,7 @@ class Login extends React.Component{
           AsyncStorage.setItem('name', res.name);
           that.props.navigator.push({
             component: Listings,
+            backButtonTitle: 'Logout',
             passProps: {
               userInfo: authData
             }

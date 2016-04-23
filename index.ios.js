@@ -22,8 +22,7 @@ class projectSapphire extends Component {
     <NavigatorIOS
       style={styles.container}
       initialRoute={{
-        component: Login,
-        title: 'Find Some Friends'
+        component: Login
       }}
     />
     );

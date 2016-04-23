@@ -241,7 +241,7 @@ class Listings extends Component{
       return (
         <View style={styles.mainContainer} >
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
-          
+
           <SearchListing style={styles.searchListing} changeListing={this.changeListing.bind(this)} />
           <ScrollView style={styles.listContain}
             showsVerticalScrollIndicator={true}
