@@ -1,10 +1,12 @@
 var React = require('react-native');
 var Firebase = require('firebase');
 var api = require('../../Utils/api');
-var firebaseUrl = require('../../Utils/config')
 var Listings = require('../Listings/Listings')
+var Signup = require('./Signup');
+var TabBar = require('../TabBar');
+var Listings = require('../Listings/Listings.js');
+var firebaseUrl = require('../../Utils/config');
 
-import Signup from './Signup'
 
 
 var {

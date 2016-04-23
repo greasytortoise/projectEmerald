@@ -196,7 +196,7 @@ class Listings extends Component{
                     <Text style={styles.descriptionText}>{item.description}</Text>
                     <Text style={styles.authorText}>Listed by: {item.createdBy}</Text>
                     <View style={styles.rightContainer}>
-                      <Text style={styles.descriptionText}>{util.getDistanceFromLatLonInMiles(this.state.lat, this.state.long, item.latitude, item.longitude)} Miles</Text>
+                      <Text style={styles.distanceText}>{util.getDistanceFromLatLonInMiles(this.state.lat, this.state.long, item.latitude, item.longitude)} Miles</Text>
                     </View>
                   </View>
                 </View>
@@ -217,6 +217,13 @@ class Listings extends Component{
       return (
         <View style={styles.mainContainer} >
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
+          
+          <SearchListing style={styles.searchListing} changeListing={this.changeListing.bind(this)} />
+          <ScrollView
+            showsVerticalScrollIndicator={true}
+          >
+          {listingsView}
+          </ScrollView>
           <TouchableHighlight
           style={styles.buttonContainer}
           onPress={() => this.addFriends()}
@@ -224,12 +231,6 @@ class Listings extends Component{
           >
           <Text style={styles.buttonText}> Create New Listing </Text>
           </TouchableHighlight>
-          <SearchListing changeListing={this.changeListing.bind(this)} />
-          <ScrollView
-            showsVerticalScrollIndicator={true}
-          >
-          {listingsView}
-          </ScrollView>
         </View>
       )
     }
@@ -238,24 +239,26 @@ class Listings extends Component{
 
 var styles = {
   mainContainer: {
+    backgroundColor: '#9DC261'
   },
   container: {
     flex: 1,
     marginTop: 0
   },
+  searchListing: {
+    backgroundColor: '#9DC261'
+  },
 
   buttonContainer: {
     flex: 1,
     flexDirection: 'row',
-    margin: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#2D97ED',
-    padding:10,
-    height:30,
-    overflow:'hidden',
-    borderRadius:4,
-    borderWidth: 2
+    backgroundColor: '#48BBEC',
+    height:50,
+    top: 2,
+    overflow:'hidden'
+
   },
   isLoadingContainer: {
     flex: 1,
@@ -297,10 +300,22 @@ var styles = {
     fontWeight: 'bold'
     // color: 'black'
   },
+  buttonText: {
+    position: 'relative',
+    top: -2,
+    fontSize: 14,
+    fontWeight: 'bold'
+    // color: 'black'
+  },
 
   descriptionText: {
     fontSize: 12,
     // color: '#feb732'
+  },
+
+  distanceText: {
+    fontSize: 10,
+    color: '#feb732'
   },
 
   authorText: {
