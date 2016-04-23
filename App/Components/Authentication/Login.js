@@ -1,10 +1,11 @@
 var React = require('react-native');
 var Firebase = require('firebase');
 var api = require('../../Utils/api');
-var Signup = require('./Signup');
 var firebaseUrl = require('../../Utils/config')
-
 var Listings = require('../Listings/Listings')
+
+import Signup from './Signup'
+
 
 var {
   View,
@@ -20,6 +21,7 @@ var {
 
 class Login extends React.Component{
   constructor(props) {
+       
     super(props);
     this.state = {
       email:  '',

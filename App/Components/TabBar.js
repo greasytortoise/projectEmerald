@@ -61,4 +61,5 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = TabBar;
+// module.exports = TabBar;
+export default TabBar;

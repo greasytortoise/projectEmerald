@@ -21,6 +21,7 @@ import React, {
 class Profile extends Component{
 
   constructor(props) {
+    
     super(props)
     this.state = {
       isLoading: true
@@ -209,4 +210,4 @@ var styles = {
   }
 };
 
-module.exports = Profile;
+export default Profile;

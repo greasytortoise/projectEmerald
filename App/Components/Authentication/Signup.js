@@ -2,8 +2,9 @@ var React = require('react-native');
 var Firebase = require('firebase');
 var api = require('../../Utils/api');
 var UserDetails = require('./UserDetails');
-var SignupAddInfo = require('./SignupAddInfo');
 var firebaseUrl = require('../../Utils/config')
+
+import SignupAddInfo from './SignupAddInfo';
 
 var {
   View,
@@ -195,4 +196,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = Signup;
+export default Signup;
