@@ -1,6 +1,6 @@
-var Login = require('./App/Components/Authentication/Login');
+// var Login = require('./App/Components/Authentication/Login');
 var api = require('./App/Utils/api');
-
+import Login from './App/Components/Authentication/Login'
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
