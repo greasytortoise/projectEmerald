@@ -23,7 +23,7 @@ var {
 
 class Login extends React.Component{
   constructor(props) {
-       
+
     super(props);
     this.state = {
       email:  '',
@@ -35,28 +35,21 @@ class Login extends React.Component{
 
     AsyncStorage.getItem('authData').then(authData => {
 
-      authData = JSON.parse(authData);
+      if(authData) {
+        authData = JSON.parse(authData);
+        this.props.navigator.push({
+          component: Listings,
+          passProps: {
+            userInfo: authData
+          }
+        });
+      }
+
       api.checkAuthToken(authData.token, (error, result) => {
         if(result) {
           api.getUserData(authData.uid).then((res) => {
             AsyncStorage.setItem('name', res.name);
-            this.props.navigator.replace({
-              component: Listings,
-              passProps: {
-                userInfo: authData
-              }
-            });
           })
-
-
-
-
-          this.props.navigator.replace({
-            component: Listings,
-            passProps: {
-              userInfo: authData
-            }
-          });
         } else {
           console.log(error, authData);
         }
@@ -96,7 +89,7 @@ class Login extends React.Component{
         .then((res) => {
           console.log(res)
           AsyncStorage.setItem('name', res.name);
-          that.props.navigator.replace({
+          that.props.navigator.push({
             component: Listings,
             passProps: {
               userInfo: authData
