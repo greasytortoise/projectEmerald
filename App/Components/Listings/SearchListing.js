@@ -62,22 +62,21 @@ const styles = StyleSheet.create({
   textInput: {
     alignItems: 'center',
     justifyContent: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 2,
+    paddingBottom: 2,
     height: 35,
-    marginTop:0,
+    marginTop:4,
     marginBottom: 0,
     marginRight: 10,
     marginLeft: 10,
     borderRadius:4,
     flexWrap: 'wrap',
-    backgroundColor: '#eee',
+    backgroundColor: '#cde0d2',
     fontSize: 15,
     color: '#333',
     borderColor: '#ddd',
     borderWidth: 1
   }
 });
-
-
-
-
-

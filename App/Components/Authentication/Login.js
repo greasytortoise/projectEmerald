@@ -222,7 +222,7 @@ var styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 10,
     marginTop: 5,
-    backgroundColor: '#9dc7c9',
+    backgroundColor: '#cde0d2',
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
