@@ -52,14 +52,10 @@ module.exports = SearchListing;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    marginTop: 0,
-    padding: 10,
     backgroundColor: '#9DC261',
+    marginTop: 10
   },
   name: {
-    marginTop: 15,
     fontSize: 15,
     backgroundColor: 'rgba(0,0,0,0)'
   },
@@ -73,9 +69,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     borderRadius:4,
     flexWrap: 'wrap',
-    padding: 10,
     backgroundColor: '#eee',
-    flex: 1,
     fontSize: 15,
     color: '#333',
     borderColor: '#ddd',

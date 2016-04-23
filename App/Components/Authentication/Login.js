@@ -8,7 +8,6 @@ var firebaseUrl = require('../../Utils/config');
 
 import Signup from './Signup'
 
-
 var {
   View,
   Text,
