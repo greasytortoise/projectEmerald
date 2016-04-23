@@ -217,7 +217,6 @@ class Listings extends Component{
       //this.addFriends -> open chat, close to further connections, remove from active listings
       return (
         <View >
-          <SearchListing changeListing={this.changeListing.bind(this)} />
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
           <TouchableHighlight
           style={styles.buttonContainer}
@@ -226,6 +225,7 @@ class Listings extends Component{
           >
           <Text style={styles.buttonText}> Create New Listing </Text>
           </TouchableHighlight>
+          <SearchListing changeListing={this.changeListing.bind(this)} />
           <ScrollView
             showsVerticalScrollIndicator={true}
           >
@@ -247,7 +247,6 @@ var styles = {
     flex: 1,
     flexDirection: 'row',
     margin: 20,
-    marginTop: -10,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#2D97ED',
