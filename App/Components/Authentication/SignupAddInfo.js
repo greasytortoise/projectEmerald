@@ -1,11 +1,9 @@
 var React = require('react-native');
 var Firebase = require('firebase');
-
 var api = require('../../Utils/api');
-var TabBar = require('../TabBar');
-var Signup = require('./Signup');
 var firebaseUrl = require('../../Utils/config');
-
+import Signup from './Signup';
+import TabBar from '../TabBar'
 
 var {
   View,
@@ -13,7 +11,9 @@ var {
   StyleSheet,
   TextInput,
   TouchableHighlight,
-  ActivityIndicatorIOS
+  ActivityIndicatorIOS,
+  KeyboardSpacer,
+  AsyncStorage
 } = React;
 
 class SignupAddInfo extends React.Component{
@@ -185,7 +185,6 @@ class SignupAddInfo extends React.Component{
               <Text style={styles.buttonText}> UPDATE </Text>
           </TouchableHighlight>
 
-          <KeyboardSpacer/>
         </View>
     )
   }
@@ -247,4 +246,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = SignupAddInfo;
+export default SignupAddInfo;
