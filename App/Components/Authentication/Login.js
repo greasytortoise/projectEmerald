@@ -7,7 +7,6 @@ var TabBar = require('../TabBar');
 var Listings = require('../Listings/Listings.js');
 var firebaseUrl = require('../../Utils/config');
 
-import Signup from './Signup'
 
 
 var {
