@@ -216,7 +216,6 @@ class Listings extends Component{
       };
 
 
-      //this.addFriends -> open chat, close to further connections, remove from active listings
       return (
         <View style={styles.mainContainer} >
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
@@ -266,7 +265,7 @@ var styles = {
   isLoadingContainer: {
     flex: 1,
     marginTop: 150,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   loadingImage: {
     height: 100,
@@ -337,7 +336,13 @@ var styles = {
     flexWrap: 'wrap',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    padding: 10
+    padding: 10,
+    shadowOffset:{
+      width: 3,
+      height: 3,
+    },
+    shadowColor: 'black',
+    shadowOpacity: .5,
   },
   centerContainer: {
     flex: 1,
