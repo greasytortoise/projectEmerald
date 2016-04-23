@@ -140,7 +140,9 @@ class Login extends React.Component{
 
     return (
         <View style={styles.mainContainer}>
+          <Image style={styles.hrBanner} source={require('../../Images/hrBanner.png')} />
           <Image style={styles.logo} source={require('../../Images/tortoise.png')} />
+
           <Text style={styles.title}>FriendFinder</Text>
 
           <Text style={styles.pageText}>Email</Text>
@@ -256,6 +258,11 @@ var styles = StyleSheet.create({
     height: 150,
     width: 150,
     alignSelf: 'center'
+  },
+  hrBanner: {
+    marginTop: -35,
+    marginRight: -20,
+    alignSelf: 'flex-end'
   }
 });
 
