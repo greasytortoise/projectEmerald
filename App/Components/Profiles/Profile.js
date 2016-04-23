@@ -48,6 +48,7 @@ class Profile extends Component{
 
   getAsyncData() {
     var that = this;
+    console.log(that.props);
     api.getUserData(that.props.userInfo.uid)
       .then(function(res) {
         that.setState({

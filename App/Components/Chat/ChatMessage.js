@@ -1,5 +1,5 @@
 var React = require('react-native');
-
+var Profile = require('../Profiles/Profile.js');
 var {
   StyleSheet,
   Text,
@@ -15,7 +15,9 @@ class ChatMessage extends React.Component{
 
   messageTapped() {
     this.props.navigator.push({
-      title: 'View Friend'
+      title: 'View Friend', 
+      Component: 'Profile',
+      passProps: {random: 'sadasdasd'}
     });
   }
 
@@ -45,6 +47,17 @@ class ChatMessage extends React.Component{
           </TouchableHighlight>
         );
       }
+    console.log(this.props.message)
+    
+    if(currentUserId === message.author.id) {
+      return (
+        <TouchableHighlight
+          style={styles.message}
+          onPress={this.messageTapped.bind(this)}
+          underlayColor='#fff'>
+          <Text style={styles.messageTextAuthor}>{message.message}</Text>
+        </TouchableHighlight>
+      );
     } else {
      return(<View></View>)
    }
