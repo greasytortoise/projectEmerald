@@ -134,11 +134,10 @@ class Listings extends Component{
   }
 
   addFriends(){
-    var that = this;
-    that.props.navigator.push({
+    this.props.navigator.push({
       title: 'Create New Listing',
       component: CreateListing,
-      passProps: {userInfo: that.props.userInfo, allFriends: that.state.friendData, handleFriendsRender: that.handleFriendsRender.bind(that)}
+      passProps: {userInfo: this.props.userInfo, allFriends: this.state.friendData, handleFriendsRender: this.handleFriendsRender.bind(this)}
     });
   }
 
@@ -226,7 +225,7 @@ class Listings extends Component{
           </ScrollView>
           <TouchableHighlight
           style={styles.buttonContainer}
-          onPress={() => this.addFriends()}
+          onPress={this.addFriends.bind(this)}
           underlayColor="#EEE"
           >
           <Text style={styles.buttonText}> Create New Listing </Text>
