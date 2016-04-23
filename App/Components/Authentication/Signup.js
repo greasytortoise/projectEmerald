@@ -94,6 +94,7 @@ class Signup extends React.Component{
 
     return (
       <View style={styles.mainContainer}>
+        <Image style={styles.hrBanner} source={require('../../Images/hrBanner.png')} />
         <Image style={styles.logo} source={require('../../Images/tortoise.png')} />
         <Text style={styles.title}>Sign Up</Text>
 
@@ -193,6 +194,11 @@ var styles = StyleSheet.create({
     height: 250,
     width: 250,
     alignSelf: 'center'
+  },
+  hrBanner: {
+    marginTop: 65,
+    marginRight: -20,
+    alignSelf: 'flex-end'
   }
 });
 
