@@ -34,6 +34,7 @@ class Listings extends Component{
       updateAlert: '',
       listingData: {},
       displayData: {},
+      search: false,
       lat: 37.783610,
       long: -122.409002
     };
@@ -49,7 +50,7 @@ class Listings extends Component{
   }
 
   componentWillMount() {
-    this.getAsyncData();
+    this.getAsyncData();    
   }
 
   getAsyncData() {
@@ -67,7 +68,6 @@ class Listings extends Component{
           that.setState({
             updateAlert: '',
             listingData: res,
-            displayData: res,
             isLoading: false,
           });
 
@@ -86,7 +86,6 @@ class Listings extends Component{
           that.setState({
             updateAlert: '',
             listingData: res,
-            displayData: res,
             isLoading: false,
           });
 
@@ -164,7 +163,8 @@ class Listings extends Component{
     });
 
     this.setState({
-      displayData: obj
+      displayData: obj,
+      search: true
     })
     console.log('data: ', this.state.displayData);
   }
@@ -180,7 +180,11 @@ class Listings extends Component{
       )
     } else {
       var user = this.props.userInfo;
-      var listings = this.state.displayData;
+      if (!this.state.search) {
+        var listings = this.state.listingData;
+      } else {
+        var listings = this.state.displayData;
+      }
       if (listings !== null && Object.keys(listings).length > 0) {
         var listingsView = _.map(listings, (item, index) => {
           return (
