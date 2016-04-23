@@ -7,6 +7,8 @@ var firebaseUrl = require('../../Utils/config')
 var ChatMessage = require('./ChatMessage');
 var api = require('../../Utils/api.js');
 
+import Listings from '../Listings/Listings.js';
+
 var {
   StyleSheet,
   Text,
@@ -45,7 +47,6 @@ class Chat extends React.Component{
 
   componentWillMount() {
     var that = this;
-    Firebase.enableLogging(true);
     this.ref.on('value', function(snapshot) {
       var items = [];
       snapshot.forEach(child => {
@@ -54,15 +55,21 @@ class Chat extends React.Component{
       this.setState({ 'items': items });
 
     }.bind(this));
+
+    this.ref.on('child_removed', function(snapshot) {
+      this.props.navigator.pop();
+      
+    }.bind(this));
+
   }
 
   componentWillUnmount() {
     AsyncStorage.getItem('authData').then(authData => {
       var currentUserId = JSON.parse(authData).uid;
       if(currentUserId === this.props.listingCreatedBy) {
-        api.destroyChat(currentUserId, () => {
+        api.deleteListing(currentUserId, () => {
           console.log('THING HAPPENED');
-          api.deleteListing(currentUserId, () => {
+          api.destroyChat(currentUserId, () => {
             console.log('Live Long and Prosper');
           })
         });
@@ -73,6 +80,7 @@ class Chat extends React.Component{
 
   _onPressButton() {
     this.ref.push({ author: this.user, message: this.state.text });
+    this.setState({text: ''});
   }
 
   createMessage(message, index) {

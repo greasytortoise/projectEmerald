@@ -15,7 +15,6 @@ class ChatMessage extends React.Component{
   }
 
   messageTapped() {
-    console.log(this.props);
     this.props.navigator.push({
       title: 'View Friend', 
       component: ProfileFriend,

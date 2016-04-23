@@ -104,7 +104,6 @@ class Listings extends Component{
   }
 
   startConnection(listingData) {
-    console.log(listingData);
     this.props.navigator.push({
       title: 'Chat',
       component: Chat,
