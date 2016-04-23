@@ -196,7 +196,7 @@ class Listings extends Component{
                     <Text style={styles.descriptionText}>{item.description}</Text>
                     <Text style={styles.authorText}>Listed by: {item.createdBy}</Text>
                     <View style={styles.rightContainer}>
-                      <Text style={styles.descriptionText}>{util.getDistanceFromLatLonInMiles(this.state.lat, this.state.long, item.latitude, item.longitude)} Miles</Text>
+                      <Text style={styles.distanceText}>{util.getDistanceFromLatLonInMiles(this.state.lat, this.state.long, item.latitude, item.longitude)} Miles</Text>
                     </View>
                   </View>
                 </View>
@@ -218,7 +218,7 @@ class Listings extends Component{
         <View style={styles.mainContainer} >
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
           
-          <SearchListing changeListing={this.changeListing.bind(this)} />
+          <SearchListing style={styles.searchListing} changeListing={this.changeListing.bind(this)} />
           <ScrollView
             showsVerticalScrollIndicator={true}
           >
@@ -239,10 +239,14 @@ class Listings extends Component{
 
 var styles = {
   mainContainer: {
+    backgroundColor: '#9DC261'
   },
   container: {
     flex: 1,
     marginTop: 0
+  },
+  searchListing: {
+    backgroundColor: '#9DC261'
   },
 
   buttonContainer: {
@@ -252,9 +256,8 @@ var styles = {
     justifyContent: 'center',
     backgroundColor: '#48BBEC',
     height:50,
-    position: 'relative',
     top: 2,
-    overflow:'hidden',
+    overflow:'hidden'
 
   },
   isLoadingContainer: {
@@ -297,10 +300,22 @@ var styles = {
     fontWeight: 'bold'
     // color: 'black'
   },
+  buttonText: {
+    position: 'relative',
+    top: -2,
+    fontSize: 14,
+    fontWeight: 'bold'
+    // color: 'black'
+  },
 
   descriptionText: {
     fontSize: 12,
     // color: '#feb732'
+  },
+
+  distanceText: {
+    fontSize: 10,
+    color: '#feb732'
   },
 
   authorText: {
