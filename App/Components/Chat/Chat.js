@@ -58,12 +58,14 @@ class Chat extends React.Component{
   }
 
   componentWillUnmount() {
-    console.log(this.props);
     AsyncStorage.getItem('authData').then(authData => {
       var currentUserId = JSON.parse(authData).uid;
-      if(currentUserId === this.props.listingData.createdById) {
+      if(currentUserId === this.props.listingCreatedBy) {
         api.destroyChat(currentUserId, () => {
           console.log('THING HAPPENED');
+          api.deleteListing(currentUserId, () => {
+            console.log('Live Long and Prosper');
+          })
         });       
       }
     });
@@ -75,7 +77,6 @@ class Chat extends React.Component{
   }
 
   createMessage(message, index) {
-    console.log(this.props);
     return(
       <ChatMessage
         key = {index}
