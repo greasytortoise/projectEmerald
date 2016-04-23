@@ -1,5 +1,11 @@
 var ProfileEdit = require('./ProfileEdit');
 var api = require('../../Utils/api');
+var firebaseUrl = require('../../Utils/config');
+var Firebase = require('firebase');
+
+import Login from '../Authentication/Login';
+
+var app = new Firebase(firebaseUrl);
 
 import React, {
   View,
@@ -9,6 +15,7 @@ import React, {
   Component,
   ScrollView,
   TouchableHighlight,
+  AsyncStorage
 } from 'react-native';
 
 class Profile extends Component{
@@ -59,6 +66,18 @@ class Profile extends Component{
       .catch((err) => console.log(err))
   }
 
+  logout() {
+    var that = this;
+
+    AsyncStorage.removeItem('authData').then(function(){
+      app. unauth();
+
+      that.props.navigator.replace({
+        component: Login
+      });
+    })
+  }
+
 
   render(){
     if (this.state.isLoading) {
@@ -98,6 +117,12 @@ class Profile extends Component{
           <View style={styles.container}>
             {list}
           </View>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => this.logout()}
+            underlayColor='white' >
+              <Text style={styles.buttonText}>LOG OUT</Text>
+          </TouchableHighlight>
         </View>
       )
     }
@@ -161,6 +186,26 @@ var styles = {
   rowContent: {
     color: '#022c3d',
     fontSize: 19
+  },
+  button: {
+    height: 30,
+    width: 150,
+    flexDirection: 'row',
+    backgroundColor: '#498183',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    marginTop: 15,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    padding: 10
+  },
+  buttonText: {
+    color: 'white',
+    // padding: 10,
+    fontSize: 20,
+    alignSelf: 'center'
   }
 };
 
