@@ -1,11 +1,12 @@
 var React = require('react-native');
-
 var {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
 } = React;
+
+import ProfileFriend from '../Profiles/ProfileFriend.js';
 
 
 class ChatMessage extends React.Component{
@@ -14,8 +15,11 @@ class ChatMessage extends React.Component{
   }
 
   messageTapped() {
+    console.log(this.props);
     this.props.navigator.push({
-      title: 'View Friend'
+      title: 'View Friend', 
+      component: ProfileFriend,
+      passProps: {friendData: {userId:this.props.message.author.id}}
     });
   }
 

@@ -75,11 +75,13 @@ class Chat extends React.Component{
   }
 
   createMessage(message, index) {
+    console.log(this.props);
     return(
       <ChatMessage
         key = {index}
         currentUserId = {this.user.id}
-        message = {message}/>
+        message = {message}
+        navigator = {this.props.navigator}/>
     );
   };
 

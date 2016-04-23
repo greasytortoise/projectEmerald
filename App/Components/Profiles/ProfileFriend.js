@@ -84,12 +84,6 @@ class ProfileFriend extends Component{
             <Text style={styles.badgeName}> {friendData.name}</Text>
           </View>
           <View style={styles.container}>
-            <TouchableHighlight
-              style={styles.button}
-              onPress={this.startConnection.bind(this)}
-              underlayColor='white' >
-              <Text style={styles.buttonText}> CONNECT </Text>
-            </TouchableHighlight>
             {list}
           </View>
         </View>
