@@ -7,6 +7,7 @@ var CreateListing = require('../FriendsAdd');
 var Chat = require('../Chat/Chat.js')
 var CreateListingButton = require('./CreateListingButton');
 var CreateListing = require('./CreateListing');
+var SearchListing = require('./SearchListing');
 var _ = require('underscore');
 var util = require('../../Utils/location-util');
 var Promise = require('bluebird');
@@ -32,6 +33,7 @@ class Listings extends Component{
       isLoading: true,
       updateAlert: '',
       listingData: {},
+      displayData: {},
       lat: 37.783610,
       long: -122.409002
     };
@@ -65,6 +67,7 @@ class Listings extends Component{
           that.setState({
             updateAlert: '',
             listingData: res,
+            displayData: res,
             isLoading: false,
           });
 
@@ -83,6 +86,7 @@ class Listings extends Component{
           that.setState({
             updateAlert: '',
             listingData: res,
+            displayData: res,
             isLoading: false,
           });
 
@@ -139,6 +143,34 @@ class Listings extends Component{
     });
   }
 
+  changeListing(text) {
+    text = text.toLowerCase();
+
+    var obj = {};
+
+    var searchKeys = {
+      activity: '',
+      createdBy: '',
+      description: '',
+      category: ''
+    };
+
+    _.each(this.state.listingData, function(listing, index) {
+        // console.log('listing: ', this.state.listingData);
+      for (var key in searchKeys) {
+        if (listing[key] && listing[key].toLowerCase().includes(text)) {
+          obj[index] = listing;
+          break;
+        }
+      }
+    });
+
+    this.setState({
+      displayData: obj
+    })
+    console.log('data: ', this.state.displayData);
+  }
+
   render(){
 
     if (this.state.isLoading) {
@@ -150,7 +182,7 @@ class Listings extends Component{
       )
     } else {
       var user = this.props.userInfo;
-      var listings = this.state.listingData;
+      var listings = this.state.displayData;
       if (listings !== null && Object.keys(listings).length > 0) {
         var listingsView = _.map(listings, (item, index) => {
           return (
@@ -193,6 +225,7 @@ class Listings extends Component{
           >
           <Text style={styles.buttonText}> Create New Listing </Text>
           </TouchableHighlight>
+          <SearchListing changeListing={this.changeListing.bind(this)} />
           <ScrollView
             showsVerticalScrollIndicator={true}
           >
