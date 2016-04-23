@@ -74,7 +74,7 @@ class CreateListing extends Component{
     that.props.navigator.push({
       title: 'Chat',
       component: Chat,
-      passProps: {listingData: data}
+      passProps: {listingCreatedBy: data.createdById}
     });
   }
 
