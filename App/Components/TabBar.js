@@ -55,15 +55,6 @@ class TabBar extends React.Component {
             <MapboxMap {...this.props} />
             </View>
         </TabBarIOS.Item>
-        <TabBarIOS.Item
-          selected={this.state.selectedTab === 'tabFour'}
-          onPress={() => this.setTab('tabFour')}
-          title="Chat"
-          icon={require("../Images/flux.png")}>
-            <View style={styles.tabContent}>
-            <Chat {...this.props} />
-            </View>
-        </TabBarIOS.Item>
       </TabBarIOS>
     );
   }
