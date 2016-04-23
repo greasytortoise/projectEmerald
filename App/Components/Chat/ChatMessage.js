@@ -16,7 +16,7 @@ class ChatMessage extends React.Component{
 
   messageTapped() {
     this.props.navigator.push({
-      title: 'View Friend', 
+      title: 'View Friend',
       component: ProfileFriend,
       passProps: {friendData: {userId:this.props.message.author.id}}
     });
@@ -72,7 +72,7 @@ var styles = StyleSheet.create({
     paddingRight:10
   },
   messageTextAuthor: {
-    backgroundColor: '#30A3FC',
+    backgroundColor: '#32b848',
     borderRadius: 10,
     color: '#fff',
     textAlign: 'right',

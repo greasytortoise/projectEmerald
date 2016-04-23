@@ -54,7 +54,7 @@ class Chat extends React.Component{
 
     this.ref.on('child_removed', function(snapshot) {
       this.props.navigator.pop();
-      
+
     }.bind(this));
 
   }
@@ -117,7 +117,7 @@ class Chat extends React.Component{
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fafafa',
+    backgroundColor: '#cce4d0',
     flex: 1,
     flexDirection: 'column',
     marginBottom: 198,
@@ -147,7 +147,7 @@ var styles = StyleSheet.create({
     paddingRight:10
   },
   messageTextAuthor: {
-    backgroundColor: '#30A3FC',
+    backgroundColor: '#30fca0',
     borderRadius: 10,
     color: '#fff',
     textAlign: 'right',

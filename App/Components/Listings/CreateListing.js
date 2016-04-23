@@ -241,8 +241,7 @@ var styles = {
   },
   button: {
     height: 36,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
+    backgroundColor: '#3b6142',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 10,
@@ -269,7 +268,7 @@ var styles = {
   name: {
     marginTop: 15,
     fontSize: 20,
-    backgroundColor: 'rgba(0,0,0,0)'
+    backgroundColor: 'rgba(0,0,0,0'
   },
   searchInput: {
     height: 30,
@@ -318,16 +317,19 @@ var styles = {
   dropdown: {
     width: 300,
     borderColor: '#999',
+    background: '#e6f0e1',
     borderWidth: 1,
     padding: 5,
     marginBottom: 20
   },
   dropdownOptions: {
     marginTop: 30,
+    background: '#e6f0e1',
+
     borderColor: '#ccc',
     borderWidth: 2,
     width: 300,
-    height: 200
+    height: 100
   },
   textInput: {
     height: 50,
