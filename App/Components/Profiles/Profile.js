@@ -21,7 +21,7 @@ import React, {
 class Profile extends Component{
 
   constructor(props) {
-    
+
     super(props)
     this.state = {
       isLoading: true
@@ -57,8 +57,8 @@ class Profile extends Component{
   getAsyncData() {
     var that = this;
     console.log(that.props);
-    api.getUserData(that.props.userInfo.uid)
-      .then(function(res) {
+    api.getUserData(that.props.userInfo.uid).then(function(res) {
+      
         that.setState({
           userData: res,
           isLoading: false
@@ -81,21 +81,11 @@ class Profile extends Component{
 
 
   render(){
-    if (this.state.isLoading) {
-      return (
-        <View style={styles.isLoadingContainer}>
-          <Image style={styles.loadingImage} source={require('../../Images/loading.gif')} />
-        </View>
-      )
-    } else {
       var userData = this.state.userData;
       var topicArr = ['email', 'phone'];
+      if(userData) {
 
-      var list = topicArr.map((item, index) => {
-        if(!userData[item]) {
-          return
-            <View key={index} />
-        } else {
+        var list = topicArr.map((item, index) => {
           return (
             <View key={index}>
               <View style={styles.rowContainer}>
@@ -104,30 +94,32 @@ class Profile extends Component{
               </View>
             </View>
           )
-        }
-      })
-      return (
-        <View>
-          <View style={styles.badgeContainer}>
-            <TouchableHighlight onPress={() => this.editProfile()}>
-              <Image style={styles.editImage} source={require('../../Images/edit.png')} />
+        })
+        return (
+          <View>
+            <View style={styles.badgeContainer}>
+              <TouchableHighlight onPress={() => this.editProfile()}>
+                <Image style={styles.editImage} source={require('../../Images/edit.png')} />
+              </TouchableHighlight>
+              <Image style={styles.badgeImage} source={{uri: userData.profileImageURL}} />
+              <Text style={styles.badgeName}> {userData.name}</Text>
+            </View>
+            <View style={styles.container}>
+              {list}
+            </View>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={() => this.logout()}
+              underlayColor='white' >
+                <Text style={styles.buttonText}>LOG OUT</Text>
             </TouchableHighlight>
-            <Image style={styles.badgeImage} source={{uri: userData.profileImageURL}} />
-            <Text style={styles.badgeName}> {userData.name}</Text>
           </View>
-          <View style={styles.container}>
-            {list}
-          </View>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={() => this.logout()}
-            underlayColor='white' >
-              <Text style={styles.buttonText}>LOG OUT</Text>
-          </TouchableHighlight>
-        </View>
-      )
+        )
+      } else {
+        return(<View />)
+      }
     }
-  }
+
 }
 
 var styles = {
