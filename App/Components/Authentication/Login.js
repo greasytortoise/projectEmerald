@@ -2,9 +2,9 @@ var React = require('react-native');
 var Firebase = require('firebase');
 var api = require('../../Utils/api');
 var Signup = require('./Signup');
-var TabBar = require('../TabBar');
 var firebaseUrl = require('../../Utils/config')
 
+var Listings = require('../Listings/Listings')
 
 var {
   View,
@@ -37,7 +37,7 @@ class Login extends React.Component{
           api.getUserData(authData.uid).then((res) => {
             AsyncStorage.setItem('name', res.name);
             this.props.navigator.replace({
-              component: TabBar,
+              component: Listings,
               passProps: {
                 userInfo: authData
               }
@@ -48,7 +48,7 @@ class Login extends React.Component{
 
 
           this.props.navigator.replace({
-            component: TabBar,
+            component: Listings,
             passProps: {
               userInfo: authData
             }
@@ -93,7 +93,7 @@ class Login extends React.Component{
           console.log(res)
           AsyncStorage.setItem('name', res.name);
           that.props.navigator.replace({
-            component: TabBar,
+            component: Listings,
             passProps: {
               userInfo: authData
             }
