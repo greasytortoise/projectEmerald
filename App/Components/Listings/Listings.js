@@ -217,6 +217,13 @@ class Listings extends Component{
       return (
         <View style={styles.mainContainer} >
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
+          
+          <SearchListing changeListing={this.changeListing.bind(this)} />
+          <ScrollView
+            showsVerticalScrollIndicator={true}
+          >
+          {listingsView}
+          </ScrollView>
           <TouchableHighlight
           style={styles.buttonContainer}
           onPress={() => this.addFriends()}
@@ -224,12 +231,6 @@ class Listings extends Component{
           >
           <Text style={styles.buttonText}> Create New Listing </Text>
           </TouchableHighlight>
-          <SearchListing changeListing={this.changeListing.bind(this)} />
-          <ScrollView
-            showsVerticalScrollIndicator={true}
-          >
-          {listingsView}
-          </ScrollView>
         </View>
       )
     }
@@ -247,15 +248,14 @@ var styles = {
   buttonContainer: {
     flex: 1,
     flexDirection: 'row',
-    margin: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#2D97ED',
-    padding:10,
-    height:30,
+    backgroundColor: '#48BBEC',
+    height:50,
+    position: 'relative',
+    top: 2,
     overflow:'hidden',
-    borderRadius:4,
-    borderWidth: 2
+
   },
   isLoadingContainer: {
     flex: 1,
