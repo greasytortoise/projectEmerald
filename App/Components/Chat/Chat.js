@@ -16,7 +16,6 @@ var {
   ScrollView,
   AsyncStorage
 } = React;
-//.
 
 class Chat extends React.Component{
 
@@ -26,7 +25,7 @@ class Chat extends React.Component{
     this.state = {
       items: []
     };
-    this.ref = new Firebase(firebaseUrl + '/chat');
+    this.ref = new Firebase(firebaseUrl + '/chat/' + props.listingCreatedBy);
 
     // this.user = '';
     // AsyncStorage.getItem('name').then(name => {
@@ -66,7 +65,7 @@ class Chat extends React.Component{
           api.deleteListing(currentUserId, () => {
             console.log('Live Long and Prosper');
           })
-        });       
+        });
       }
     });
 
