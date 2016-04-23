@@ -216,7 +216,7 @@ class Listings extends Component{
 
       //this.addFriends -> open chat, close to further connections, remove from active listings
       return (
-        <View >
+        <View style={styles.mainContainer} >
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
           <TouchableHighlight
           style={styles.buttonContainer}
@@ -238,6 +238,8 @@ class Listings extends Component{
 }
 
 var styles = {
+  mainContainer: {
+  },
   container: {
     flex: 1,
     marginTop: 0
