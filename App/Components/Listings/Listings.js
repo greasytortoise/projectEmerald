@@ -246,7 +246,7 @@ class Listings extends Component{
           <ScrollView style={styles.listContain}
             showsVerticalScrollIndicator={true}
           >
-          {listingsView}
+            {listingsView}
           </ScrollView>
           <TouchableHighlight
           style={styles.buttonContainer}
@@ -263,32 +263,35 @@ class Listings extends Component{
 
 var styles = {
   mainContainer: {
-    backgroundColor: '#9DC261'
+    flex: 1,
+    backgroundColor: '#9DC261',
   },
 
   searchListing: {
-    backgroundColor: '#9DC261'
-  },
-  listContain: {
-    flex: 1
-  },
-  buttonContainer: {
     flex: 1,
+    backgroundColor: '#9DC261',
+    height: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  buttonContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#48BBEC',
     height:50,
-    top: 2,
     overflow:'hidden',
     borderWidth: 0.5
-
   },
+
   isLoadingContainer: {
     flex: 1,
     marginTop: 150,
     alignSelf: 'center',
   },
+
   loadingImage: {
     height: 100,
     width: 100,
