@@ -146,7 +146,7 @@ class CreateListing extends Component{
       )
     });
     return (
-      <MenuContext style={{ flex: 1 }} ref="MenuContext">
+      <MenuContext style={styles.menuCont} ref="MenuContext">
         <View style={styles.container}>
           <Text style={styles.alertText}>{this.state.updateAlert}</Text>
           <Text style={styles.name}>Pick a category....</Text>
@@ -193,11 +193,16 @@ class CreateListing extends Component{
 }
 
 var styles = {
+  menuCont: {
+    flex: 1,
+    backgroundColor: '#9DC261'
+  },
+
   container: {
     justifyContent: 'center',
     marginTop: 50,
     padding: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#9DC261',
   },
   buttonContainer: {
     flex: 1,
@@ -314,7 +319,8 @@ var styles = {
     width: 300,
     borderColor: '#999',
     borderWidth: 1,
-    padding: 5
+    padding: 5,
+    marginBottom: 20
   },
   dropdownOptions: {
     marginTop: 30,

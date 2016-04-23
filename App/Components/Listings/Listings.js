@@ -11,6 +11,9 @@ var SearchListing = require('./SearchListing');
 var _ = require('underscore');
 var util = require('../../Utils/location-util');
 var Promise = require('bluebird');
+var Firebase = require('firebase');
+var reactfire = require('reactfire');
+var firebaseUrl = require('../../Utils/config')
 
 
 import React, {
@@ -38,6 +41,7 @@ class Listings extends Component{
       lat: 37.783610,
       long: -122.409002
     };
+    this.ref = new Firebase(firebaseUrl + '/Listings');
   }
 
   handleFriendsRender(newListing) {
@@ -50,13 +54,33 @@ class Listings extends Component{
   }
 
   componentWillMount() {
-    this.getAsyncData();    
+    this.getAsyncData();
+    this.ref.on('value', function(snapshot) {
+      
+      api.getListings({latitude: this.state.lat, longitude: this.state.long}, 100, (res) => {
+
+        this.setState({
+          updateAlert: '',
+          listingData: res,
+          displayData: res,
+          isLoading: false,
+        });
+
+      }).catch((err) => {
+
+        this.setState({
+          updateAlert: 'The hamsters running the server are too tired. Try again later.',
+          isLoading: false
+        });
+
+
+      });
+
+    }.bind(this));
   }
 
   getAsyncData() {
     var that = this;
-    setInterval(() => {
-
       //GET LISTINGS HERE
       util.getPosition((pos) => {
         that.setState({
@@ -97,8 +121,6 @@ class Listings extends Component{
           });
         })
       });
-
-   }, 3500);
 
   }
 
@@ -216,7 +238,6 @@ class Listings extends Component{
       };
 
 
-      //this.addFriends -> open chat, close to further connections, remove from active listings
       return (
         <View style={styles.mainContainer} >
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
@@ -260,13 +281,14 @@ var styles = {
     backgroundColor: '#48BBEC',
     height:50,
     top: 2,
-    overflow:'hidden'
+    overflow:'hidden',
+    borderWidth: 0.5
 
   },
   isLoadingContainer: {
     flex: 1,
     marginTop: 150,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   loadingImage: {
     height: 100,
@@ -337,7 +359,13 @@ var styles = {
     flexWrap: 'wrap',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    padding: 10
+    padding: 10,
+    shadowOffset:{
+      width: 3,
+      height: 3,
+    },
+    shadowColor: 'black',
+    shadowOpacity: .5,
   },
   centerContainer: {
     flex: 1,
