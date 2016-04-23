@@ -1,4 +1,3 @@
-var CATEGORIES = require('./Categories.js');
 var _ = require('underscore');
 
 import React, {
@@ -12,14 +11,12 @@ import React, {
   Animated,
   ScrollView,
   TouchableHighlight,
-  PickerIOS,
   ActivityIndicatorIOS
 } from 'react-native';
 
 import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
 
 
-var PickerItemIOS       = PickerIOS.Item;
 const deviceWidth       = Dimensions.get('window').width;
 const deviceHeight      = Dimensions.get('window').height;
 
@@ -72,7 +69,8 @@ const styles = StyleSheet.create({
     height: 30,
     marginTop:25,
     marginBottom: 0,
-    margin: 10,
+    marginRight: 10,
+    marginLeft: 10,
     borderRadius:4,
     flexWrap: 'wrap',
     padding: 10,
