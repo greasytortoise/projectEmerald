@@ -29,10 +29,6 @@ class Chat extends React.Component{
     };
     this.ref = new Firebase(firebaseUrl + '/chat/' + props.listingCreatedBy);
 
-    // this.user = '';
-    // AsyncStorage.getItem('name').then(name => {
-    //   this.user = name;
-    // });
     this.user = {};
     AsyncStorage.getItem('name').then(name => {
       this.user.name = name;

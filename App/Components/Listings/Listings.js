@@ -243,7 +243,7 @@ class Listings extends Component{
           <Text style={styles.alertText}>{'\n'}{this.state.updateAlert}</Text>
           
           <SearchListing style={styles.searchListing} changeListing={this.changeListing.bind(this)} />
-          <ScrollView
+          <ScrollView style={styles.listContain}
             showsVerticalScrollIndicator={true}
           >
           {listingsView}
@@ -265,14 +265,13 @@ var styles = {
   mainContainer: {
     backgroundColor: '#9DC261'
   },
-  container: {
-    flex: 1,
-    marginTop: 0
-  },
+
   searchListing: {
     backgroundColor: '#9DC261'
   },
-
+  listContain: {
+    flex: 1
+  },
   buttonContainer: {
     flex: 1,
     flexDirection: 'row',
